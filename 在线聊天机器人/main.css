@@ -1,0 +1,206 @@
+body {
+  --appbar-bg-color: #ededed;
+  --reply-box-bg-color: #ededed;
+  --reply-input-bg-color: #ffffff;
+  --reply-input-carer-color: #94eb69;
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0px;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.appbar {
+  width: 100%;
+  height: 46px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--appbar-bg-color);
+  -webkit-box-shadow: inset 0px 0px 1px 0px #888888;
+          box-shadow: inset 0px 0px 1px 0px #888888;
+}
+
+.appbar .title {
+  font-weight: 800;
+}
+
+.appbar .back,
+.appbar .more {
+  padding: 0.5em;
+}
+
+.reply-box {
+  width: 100%;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--reply-box-bg-color);
+  -webkit-box-shadow: inset 0px 0px 1px 0px #888888;
+          box-shadow: inset 0px 0px 1px 0px #888888;
+}
+
+.reply-box .voice,
+.reply-box .emoji,
+.reply-box .add {
+  padding: 0.5em;
+}
+
+.reply-box .reply-input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.reply-box .reply-input__inner {
+  width: 100%;
+  height: 40px;
+  background-color: var(--reply-input-bg-color);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0.3em 0.5em;
+  border: none;
+  border-radius: 0.3em;
+  outline: none;
+  caret-color: var(--reply-input-carer-color);
+}
+
+.chat-box {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: #f2f2f2;
+  padding-top: 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.chat-item {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 6px 10px;
+}
+
+.chat-item .user {
+  min-width: 40px;
+  min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 0.3em;
+}
+
+.chat-item .user__head {
+  border-radius: 0.3em;
+  width: 100%;
+}
+
+.chat-item .message {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: transparent;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  line-height: 24px;
+  max-width: calc(100% - 100px);
+}
+
+.chat-item .message::before {
+  position: absolute;
+  top: 15px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+
+.chat-item.ta {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.chat-item.ta .user {
+  margin-right: 10px;
+}
+
+.chat-item.ta .message {
+  background-color: #fff;
+}
+
+.chat-item.ta .message::before {
+  left: -4px;
+  background-color: #fff;
+}
+
+.chat-item.me {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.chat-item.me .user {
+  margin-left: 10px;
+}
+
+.chat-item.me .message {
+  background-color: #94eb69;
+}
+
+.chat-item.me .message::before {
+  right: -4px;
+  background-color: #94eb69;
+}
+
+.chat-item.time {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.chat-item.time .time__inner {
+  background-color: rgba(242, 242, 242, 0.6);
+  padding: 6px;
+  border-radius: .3em;
+  font-size: 12px;
+}
