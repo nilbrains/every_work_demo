@@ -40,7 +40,7 @@ var nil_robot = {
     return div
   },
   // 插入一条消息
-  _append_char(issave,type, data) {
+  _append_char(issave, type, data) {
     switch (type) {
       case 'me':
         this._chat_container.appendChild(this._ret_char('me', data))
@@ -54,40 +54,54 @@ var nil_robot = {
       default:
         break
     }
-    if(issave) this._history_chats.push({
-      type,
-      data
-    })
+    if (issave)
+      this._history_chats.push({
+        type,
+        data,
+      })
     this._to_char_box_bottom()
   },
   // 将聊天界面滑动到最底部
   _to_char_box_bottom() {
-    var ele = this._chat_container;
-    if(ele.scrollHeight > ele.clientHeight) {
-      setTimeout(function(){
+    var ele = this._chat_container
+    if (ele.scrollHeight > ele.clientHeight) {
+      setTimeout(function () {
         //设置滚动条到最底部
-        ele.scrollTop = ele.scrollHeight;
-      },100);
+        ele.scrollTop = ele.scrollHeight
+      }, 100)
     }
   },
   // 机器人回复消息
   _to_reply(isonline, text) {
     console.log('[ isonline ] >', isonline)
     if (isonline) {
-      // 渡一api
-      fetch(`${this._duyi_chats_api}?text=${text}`)
-        .then((response) => response.json())
-        .then((res) => {
-          console.log('[ res ] >', res)
-          if (res.text) {
-            var msg_data = {
-              head: './imgs/head_ta.jpg',
-              username: '渡一api',
-              message: res.text,
-            }
-            this._append_char(true,'ta',msg_data)
-          }
-        })
+      // 渡一api -> 在线api
+      // fetch(`${this._duyi_chats_api}?text=${text}`)
+      //   .then((response) => response.json())
+      //   .then((res) => {
+      //     console.log('[ res ] >', res)
+      //     if (res.text) {
+      //       var msg_data = {
+      //         head: './imgs/head_ta.jpg',
+      //         username: '渡一api',
+      //         message: res.text,
+      //       }
+      //       this._append_char(true,'ta',msg_data)
+      //     }
+      //   })
+    } else {
+      console.log('[ c ] >', chat)
+      msgs = chat.filter((item) => item.reg.test(text))[0] || {
+        msg: ['你说的话我还不懂呢'],
+      }
+      console.log('[ msgs ]', msgs)
+      const index = Math.floor(Math.random() * msgs.msg.length)
+      var msg_data = {
+        head: './imgs/head_ta.jpg',
+        username: 'LOWB',
+        message: msgs.msg[index],
+      }
+      this._append_char(true, 'ta', msg_data)
     }
   },
   // 绑定事件
@@ -103,31 +117,29 @@ var nil_robot = {
           username: '我',
           message: that._reply_input.value,
         }
-        that._append_char(true,'me', msg_data)
+        that._append_char(true, 'me', msg_data)
 
         // 根据回复内容 匹配聊天话语
 
         that._to_reply(that._isonline, that._reply_input.value)
-        
+
         that._reply_input.value = ''
       }
     }
 
-    window.onunload=function(){
-      localStorage.setItem("chats",JSON.stringify(that._history_chats))
-    };
-    
+    window.onunload = function () {
+      localStorage.setItem('chats', JSON.stringify(that._history_chats))
+    }
   },
   _load() {
-
-    this._history_chats = JSON.parse(localStorage.getItem("chats") || "[]") || []
-    localStorage.removeItem("chats")
+    this._history_chats =
+      JSON.parse(localStorage.getItem('chats') || '[]') || []
+    localStorage.removeItem('chats')
     for (let index = 0; index < this._history_chats.length; index++) {
-      const temp = this._history_chats[index];
+      const temp = this._history_chats[index]
       console.log('[ temp ] >', temp)
-      this._append_char(false,temp.type,temp.data||"")
+      this._append_char(false, temp.type, temp.data || '')
     }
-
   },
   // 初始化机器人
   init(config) {
@@ -137,13 +149,13 @@ var nil_robot = {
     this._reply_input = document.querySelector('.js-reply')
     this._add_event()
     // 显示时间
-    
+
     this._load()
-    this._append_char(false,'time')
+    this._append_char(false, 'time')
   },
 }
 
 nil_robot.init({
   el: '#chart-box',
-  online: true
+  online: false,
 })
