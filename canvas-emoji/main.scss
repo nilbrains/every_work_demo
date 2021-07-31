@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+body {
+  background-color: #f2f2f2;
+}
+.app {
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 2em;
+  .title {
+    text-align: center;
+    font-size: 20px;
+  }
+  .canvas_box {
+    width: 100%;
+    padding: 2em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    canvas {
+      border-radius: .8em;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+  }
+
+  .options {
+    width: 100%;
+    .option_card {
+      padding: 1em;
+      background-color: #fff;
+      border-radius: 1em;
+      margin-bottom: 0.5em;
+      .title {
+        font-size: 16px;
+        font-weight: 800;
+      }
+    }
+    .btns .con{
+      display: flex;
+      justify-content: space-evenly;
+      .btn {
+        width: 22%;
+        border: none;
+        padding: .5em .3em;
+        border: .8em;
+        outline: none;
+        transition: all .3s;
+        cursor: pointer;
+        &:active {
+          color: #fff;
+          background-color: #22a7f2;
+        }
+      }
+    }
+    .color_in_box {
+      margin: 0.5em;
+      display: flex;
+      input.color {
+        outline: none;
+        border: 1px solid #ccc;
+        padding: 0.3em 0.5em;
+        margin-right: 3em;
+      }
+      .color_now {
+        background-color: #ccc;
+        border: 1px solid #ccc;
+        width: 2em;
+        height: 2em;
+      }
+    }
+    .color_box {
+      .color_items {
+        display: flex;
+        flex-wrap: wrap;
+        .color_item {
+          cursor: pointer;
+          margin: 0.5em;
+          width: 2em;
+          height: 2em;
+          border: 1px dashed #ccc;
+        }
+      }
+    }
+
+
+    .pen_width {
+      .con {
+        display: flex;
+        height: 30px;
+        .pen {
+          margin-right: 2em;
+        }
+        .pen_show {
+          font-size: 16px;
+          line-height: 30px;
+          width: 10px;
+          &::after {
+            content: 'px';
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.showpic {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,.5);
+  // opacity: .5;
+  img{
+    opacity: 1;
+  }
+}

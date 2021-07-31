@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表情-画图-涂鸦</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+
+  <div class="app">
+    <h2 class="title">涂鸦画板</h2>
+    <div class="canvas_box">
+      <canvas id="canvas" width="300" height="300">
+        你的浏览器暂不支持canvas~~~
+      </canvas>
+    </div>
+    <div class="options">
+      <div class="option_card btns">
+        <div class="con">
+          <button class="btn js-clear">清空</button>
+          <button class="btn js-back">撤回</button>
+          <button class="btn js-up">上传</button>
+          <button class="btn js-save">保存</button>
+        </div>
+      </div>
+      <div class="option_card color_box">
+        <div class="title">颜色选择</div>
+
+        <div class="con">
+          <div class="color_in_box">
+            <input class="js-color color" type="text" name="color">
+            <div class="js-color-now color_now"></div>
+          </div>
+          <div class="color_items js-color-list">
+          </div>
+        </div>
+      </div>
+      <div class="option_card pen_width">
+        <div class="title">粗细选择</div>
+        <div class="con">
+          <input class="js-pen pen" type="range" value="5" min="1" max="20" />
+          <div class="js-pen-show pen_show">5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="js-save-show showpic" style="display: none;">
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>
