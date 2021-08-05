@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./main.css">
+  <title>人生进度条</title>
+</head>
+
+<body>
+
+  <div class="app">
+    <div class="title">人生进度条</div>
+
+    <div class="card birthday_card">
+      <label for="brithday_inp">出生日期</label>
+      <input type="date" name="birthday" id="brithday_inp">
+    </div>
+
+    <div class="card">
+      <div class="">你的人生已经走了 <span class="bold js-life-go-years">0</span> 年</div>
+      <div class="progress">
+        <div class="progress__inner js-life-go-years-bar"></div>
+      </div>
+      <div class="">您的生日：<span class="bold js-brithday">0000/0/0</span> （平均寿命按80岁算~_~）</div>
+      <div class=""></div>
+    </div>
+
+    <div class="card">
+      <div class=""><span class="bold">今天</span> 已经过去了约 <span class="js-today-go-hour">0</span> 小时</div>
+      <div class="progress">
+        <div class="progress__inner js-today-go-hour-bar"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class=""><span class="bold">本周</span> 已经过去 <span class="js-week-go-day">0</span> 天</div>
+      <div class="progress">
+        <div class="progress__inner js-week-go-day-bar"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class=""><span class="bold">本月</span> 已经过去了 <span class="js-month-go-day">0</span> 天</div>
+      <div class="progress">
+        <div class="progress__inner js-month-go-day-bar"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class=""><span class="bold">本年</span> 已经过去了 <span class="js-year-go-month">0</span> 个月</div>
+      <div class="progress">
+        <div class="progress__inner js-year-go-month-bar"></div>
+      </div>
+    </div>
+
+  </div>
+  <script src="./main.js"></script>
+</body>
+
+</html>
