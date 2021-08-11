@@ -185,17 +185,21 @@ var sudoku_symbol = {
             : this.CHESS_PLAYER_ONE
         const { point } = this.AI(this.BOARD, this.current_player)
         point && this.onChess(point[1] * 3 + point[0] + 1, this.current_player)
-        if (this.step === 9) {
-          this.gameover = true
-          toast.show('平局')
-          this.$message.innerHTML = '平局'
-        }
+
         if (this.whoWin(this.BOARD, this.current_player)) {
           this.gameover = true
           toast.show(['电脑', '你'][this.current_player - 1] + '赢啦')
           this.$message.innerHTML =
             ['电脑', '你'][this.current_player - 1] + '赢啦'
           // console.log(this.current_player, 'win')
+        }else {
+
+          if (this.step === 9) {
+            this.gameover = true
+            toast.show('平局')
+            this.$message.innerHTML = '平局'
+          }
+
         }
       }
     })
