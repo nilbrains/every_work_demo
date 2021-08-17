@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #007a78;
+  height: 100vh;
+  width: 100%;
+}
+
+@keyframes star {
+  from {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(0, 0, 0, 0.15) 100%
+      ),
+      radial-gradient(
+          at top center,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(0, 0, 0, 0.4) 120%
+        )
+        #989898;
+    background-blend-mode: multiply, multiply;
+  }
+  50% {
+    background: none;
+    background-blend-mode: normal;
+    background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+  }
+  to {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(0, 0, 0, 0.15) 100%
+      ),
+      radial-gradient(
+          at top center,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(0, 0, 0, 0.4) 120%
+        )
+        #989898;
+    background-blend-mode: multiply, multiply;
+  }
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 2em;
+
+  .title {
+    font-size: 2.5em;
+    color: #ffc745;
+
+    padding-bottom: 1em;
+  }
+
+  .panel {
+    width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    padding-bottom: 2em;
+    .light {
+      margin: 1px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      &.off {
+        background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(0, 0, 0, 0.15) 100%
+          ),
+          radial-gradient(
+              at top center,
+              rgba(255, 255, 255, 0.4) 0%,
+              rgba(0, 0, 0, 0.4) 120%
+            )
+            #989898;
+        background-blend-mode: multiply, multiply;
+      }
+      &.on {
+        background-image: linear-gradient(-20deg, #00cdac 0%, #8ddad5 100%);
+      }
+      &.wite {
+        animation: star 1000ms infinite ease-in-out;
+      }
+    }
+  }
+
+  .option {
+    width: 300px;
+    display: flex;
+
+    justify-content: space-between;
+    
+    padding-bottom: 2em;
+    .btn {
+      border: none;
+      outline: none;
+      display: block;
+      background-color: #22a5f1;
+      padding: 0.4em;
+      color: #fff;
+      font-size: 1.4em;
+      border-radius: 0.8em;
+    }
+  }
+  .hint {
+    color: #fff;
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  box-shadow: 4px 4px 9px 3px #ccc;
+  padding: 0.5em 1em;
+  border-radius: .5em;
+}
