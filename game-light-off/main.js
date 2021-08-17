@@ -51,6 +51,8 @@ let game = {
   // 游戏抽象数据
   gamePanel: [],
   nowlevel: [],
+  level: 0,
+  step: 0,
   /**
    * @type {Element} light
    */
@@ -66,6 +68,9 @@ let game = {
         .querySelectorAll('.js-light')
         [index].classList.replace('on', 'off')
     })
+
+    this.step = 0
+    document.querySelector('.js-step').innerHTML = `共计 ${this.step} 步`
   },
   /**
    *
@@ -171,6 +176,8 @@ let game = {
         const posxy = this.getLightPosInPanel(pos)
         const poss = this.serchNearLight(posxy)
         this.lightChangeState([posxy, ...poss])
+        this.step++
+        document.querySelector('.js-step').innerHTML = `共计 ${this.step} 步`
 
         if (this.gameStart && this.isWin()) {
           console.log('赢啦')
@@ -202,8 +209,10 @@ let game = {
   },
 
   start() {
-    this.nowlevel = level[~~(Math.random() * level.length)]
+    this.level = ~~(Math.random() * level.length)
+    this.nowlevel = level[this.level]
     this.lightChangeState(this.nowlevel)
+    document.querySelector('.js-level').innerHTML = `目前第 ${this.level} 关`
     this.gameStart = true
   },
 }
